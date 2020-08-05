@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Basic Calculator</h1> <br>
+    <hr>
+    <input type="display" id="display"> <br>
+
+    <input id="firstButton" type="button" value="1" onclick="updateButton('firstButton')">
+    <input id="secondButton" type="button" value="2" onclick="updateButton('secondButton')">
+    <input id="thirdButton" type="button" value="3" onclick="updateButton('thirdButton')">
+    <input id="multipleButton" type="button" value="*" onclick="updateAddButton('multipleButton')" style="background-color: forestgreen;"> <br>
+    <input id="forthButton" type="button" value="4" onclick="updateButton('forthButton')">
+    <input id="fifthButton" type="button" value="5" onclick="updateButton('fifthButton')">
+    <input id="sixthButton" type="button" value="6" onclick="updateButton('sixthButton')">
+    <input id="divideButton" type="button" value="/" onclick="updateAddButton('divideButton')" style="background-color: rgb(29, 75, 241);"> <br>
+    <input id="seventhButton" type="button" value="7" onclick="updateButton('seventhButton')">
+    <input id="eightButton" type="button" value="8" onclick="updateButton('eightButton')">
+    <input id="ninthButton" type="button" value="9" onclick="updateButton('ninthButton')">
+    <input id="subtractButton" type="button" value="-" onclick="updateAddButton('subtractButton')" style="background-color: rgb(241, 107, 4);"> <br>
+    <input id="dotButton" type="button" value="." onclick="updateAddButton('dotButton')">
+    <input id="zeroButton" type="button" value="0" onclick="updateButton('zeroButton')">
+    <input id="calculationButton" type="button" value="=">
+    <input id="addButton" type="button" value="+" onclick="updateAddButton('addButton')" style="background-color: rgb(255, 0, 115);"> <br>
+    <input id="clearButton" type="button" value="C" style="background-color: red;">
+    <input id="backSpace"  type="button" value="backSpace">
+  </div>
+
+  <script>
+ 
+    function updateButton(Buttons){
+      const Button = document.getElementById(Buttons).value;
+      const NumberButton = parseFloat(Button);
+      const display = document.getElementById('display');
+      document.getElementById('display').value += NumberButton;
+    }
+
+      function updateAddButton(Button){
+        const singButton = document.getElementById(Button).value;
+        const display = document.getElementById('display').value += singButton;
+      }
+
+      // clearButton
+      const clearButton = document.getElementById('clearButton');
+      clearButton.addEventListener('click', function(){
+        document.getElementById('display').value = "";
+      })
+      
+      // calculationButton
+      const calculationButton = document.getElementById('calculationButton');
+      calculationButton.addEventListener('click', function(){
+        const displayNumber = document.getElementById('display').value;
+        const calculation = eval(displayNumber);
+        document.getElementById('display').value = calculation;
+        
+      })
+      
+      // backSpaceButton
+
+      const backSpaceButton = document.getElementById('backSpace');
+      backSpaceButton.addEventListener('click', function(){
+      const displayNumber = document.getElementById('display').value;
+      document.getElementById('display').value = displayNumber.substr(0, displayNumber.length - 1);
+
+      })
+
+  </script>
+</body>
+</html>
